@@ -9,7 +9,7 @@ use SilverStripe\Core\Injector\Injector;
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Error;
 use GraphQL\Type\Definition\Type;
-use SilverStripe\GraphQL\Scaffolding\ScaffoldingProvider;
+use SilverStripe\GraphQL\Scaffolding\Interfaces\ScaffoldingProvider;
 use SilverStripe\GraphQL\Scaffolding\Scaffolders\GraphQLScaffolder;
 
 class Manager
