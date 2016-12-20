@@ -2,9 +2,9 @@
 
 namespace SilverStripe\GraphQL\Pagination;
 
+use SilverStripe\Core\Object;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\GraphQL\OperationResolver;
-use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\Limitable;
 use SilverStripe\ORM\Sortable;
@@ -32,10 +32,8 @@ use InvalidArgumentException;
  *   }
  * </code>
  */
-class Connection implements OperationResolver
+class Connection extends Object implements OperationResolver
 {
-    use Injectable;
-
     /**
      * @var string
      */
@@ -89,6 +87,8 @@ class Connection implements OperationResolver
     public function __construct($connectionName)
     {
         $this->connectionName = $connectionName;
+
+        parent::__construct();
     }
 
     /**

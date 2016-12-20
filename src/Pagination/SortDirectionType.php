@@ -2,15 +2,12 @@
 
 namespace SilverStripe\GraphQL\Pagination;
 
-use GraphQL\Type\Definition\Type;
+use SilverStripe\Core\Object;
 use GraphQL\Type\Definition\EnumType;
 use GraphQL\Type\Definition\ObjectType;
-use SilverStripe\Core\Injector\Injectable;
 
-class SortDirectionType
+class SortDirectionType extends Object
 {
-    use Injectable;
-
     /**
      * @var ObjectType
      */

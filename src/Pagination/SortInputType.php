@@ -34,6 +34,7 @@ class SortInputType
      */
     public function __construct($name)
     {
+        parent::__construct();
         $this->inputName = $name;
     }
 
