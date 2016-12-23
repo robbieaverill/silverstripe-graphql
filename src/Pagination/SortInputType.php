@@ -22,19 +22,14 @@ class SortInputType
      */
     private $inputName;
 
-
     /**
      * @var array Keyed by field argument name, values as DataObject column names.
-     * Does not support in-memory sorting for composite values (getters).
+     *            Does not support in-memory sorting for composite values (getters)
      */
     protected $sortableFields = [];
 
-    /**
-     *
-     */
     public function __construct($name)
     {
-        parent::__construct();
         $this->inputName = $name;
     }
 
@@ -59,30 +54,30 @@ class SortInputType
 
         foreach ($this->sortableFields as $fieldAlias => $fieldName) {
             $values[$fieldAlias] = [
-                'value' => $fieldAlias
+                'value' => $fieldAlias,
             ];
         }
 
-        $sortableField  =  new EnumType([
-            'name' => ucfirst($this->inputName) . 'SortFieldType',
+        $sortableField = new EnumType([
+            'name' => ucfirst($this->inputName).'SortFieldType',
             'description' => 'Field name to sort by.',
-            'values' => $values
+            'values' => $values,
         ]);
 
         if (!$this->type) {
             $this->type = new InputObjectType([
-                'name' => ucfirst($this->inputName) .'SortInputType',
+                'name' => ucfirst($this->inputName).'SortInputType',
                 'description' => 'Define the sorting',
                 'fields' => [
                     'field' => [
                         'type' => Type::nonNull($sortableField),
-                        'description' => 'Sort field name.'
+                        'description' => 'Sort field name.',
                     ],
                     'direction' => [
                         'type' => Injector::inst()->get(SortDirectionType::class)->toType(),
-                        'description' => 'Sort direction (ASC / DESC)'
-                    ]
-                ]
+                        'description' => 'Sort direction (ASC / DESC)',
+                    ],
+                ],
             ]);
         }
 
